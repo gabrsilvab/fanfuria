@@ -16,6 +16,7 @@ O **FanFuria** é uma aplicação em modo experimental para proporcionar aos fã
 - **CSS3** - Estilização do aplicativo com foco em responsividade e estética minimalista.
 - **JavaScript** - Funcionalidade interativa, incluindo manipulação de dados e integração com o localStorage.
 - **APIs Externas** - Integração com APIs de Leitura de Imagem e Localizador de CEP .
+- **Localstorage** - Integrado com armazenamento de dados local para maior facilidade de testes e experimentos.
 
 ## Como Usar
 
