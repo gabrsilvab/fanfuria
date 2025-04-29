@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>fanfuria | Notícias</title>
+  <link rel="stylesheet" href="world.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+  <style>
+    .container {
+      padding: 20px;
+      color: white;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    .topo {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .filtro-area {
+      margin: 20px 0;
+    }
+
+    .noticias {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .noticia {
+      background-color: #1e1e1e;
+      padding: 15px;
+      border-radius: 10px;
+    }
+
+    .btn-voltar {
+      background-color: #333;
+      color: white;
+      border: none;
+      padding: 10px 14px;
+      border-radius: 8px;
+      cursor: pointer;
+      position: absolute;
+      right: 10%;
+      top: 120px;
+    }
+
+    select {
+      background-color: #222222;
+      color: #fff;
+      padding: 6px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="cabecalho">
+    <a href="home.html"><img class="logo-icon" src="img/logoicon.png" alt="Logo" /></a>
+    <div class="cab-texto">
+      <a href="noticias.html">Notícias</a>
+      <a href="https://www.furia.gg">Loja</a>
+      <a href="times.html">Times</a>
+      <a href="perfil.html">Perfil</a>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="topo">
+      <h1>Notícias da FURIA</h1>
+      <button class="btn-voltar" onclick="window.location.href='boasvindas.html?from=noticias'">Trocar Preferências</button>
+    </div>
+
+    <div class="filtro-area">
+      <label for="filtro">Filtrar por:</label>
+      <select id="filtro">
+        <option value="usuario">Notícias para você</option>
+        <option value="todas">Todas as notícias</option>
+      </select>
+    </div>
+
+    <div id="noticias" class="noticias">
+      <!-- As notícias devem ser adicionadas aqui futuramente -->
+    </div>
+  </div>
+
+  <script>
+    const filtro = document.getElementById('filtro');
+    const noticias = document.getElementById('noticias');
+    const timesSelecionados = JSON.parse(localStorage.getItem('timesSelecionados')) || [];
+
+    function carregarNoticias(tipo) {
+      noticias.innerHTML = '';
+
+      const msg = document.createElement('div');
+      msg.className = 'noticia';
+      msg.textContent =
+        tipo === 'usuario'
+          ? `Notícias da FURIA sobre: ${timesSelecionados.join(', ') || 'nenhum time selecionado'}.`
+          : 'Exibindo todas as notícias da FURIA.';
+      noticias.appendChild(msg);
+    }
+
+    filtro.addEventListener('change', () => {
+      carregarNoticias(filtro.value);
+    });
+
+    carregarNoticias(filtro.value);
+  </script>
+</body>
+</html>

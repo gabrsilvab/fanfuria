@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>fanfuria</title>
+  <link rel="stylesheet" href="style.css"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet"/>
+  <style>
+    .next {
+      display: none;
+      cursor: pointer;
+      margin-top: 20px;
+    }
+    .selected {
+      outline: 3px solid #000;
+      border-radius: 10px;
+    }
+  </style>
+</head>
+<body>
+  <img class="logo-boasvindas" src="img/logo.png" alt="Logo" />
+  <span class="texto1">Primeiro Acesso? Bem-vindo!</span>
+  <span class="texto2">Conta pra gente quais são seus times favoritos</span>
+
+  <div class="times">
+    <img class="val" src="img/val.png" alt="VALORANT" />
+    <img class="cs" src="img/cs.png" alt="Counter-Strike" />
+    <img class="rl" src="img/rl.png" alt="Rocket League" />
+    <img class="kl" src="img/kl.png" alt="Kings League" />
+    <img class="lol" src="img/lol.png" alt="League of Legends" />
+    <img class="r6" src="img/r6.png" alt="Rainbow Six" />
+  </div>
+
+  <img class="next" src="img/next.png" alt="Próximo" />
+
+  <script>
+    const imagens = document.querySelectorAll('.times img');
+    const nextIcon = document.querySelector('.next');
+    const timesSalvos = JSON.parse(localStorage.getItem('timesSelecionados')) || [];
+
+    // Recupera de onde veio (ex: noticias.html)
+    const urlParams = new URLSearchParams(window.location.search);
+    const from = urlParams.get('from'); // Pode ser 'noticias'
+
+    // Marcar os times já selecionados
+    imagens.forEach(img => {
+      if (timesSalvos.includes(img.alt)) {
+        img.classList.add('selected');
+      }
+    });
+
+    if (document.querySelector('.times img.selected')) {
+      nextIcon.style.display = 'block';
+    }
+
+    imagens.forEach(img => {
+      img.addEventListener('click', () => {
+        img.classList.toggle('selected');
+        const algumSelecionado = document.querySelector('.times img.selected');
+        nextIcon.style.display = algumSelecionado ? 'block' : 'none';
+      });
+    });
+
+    nextIcon.addEventListener('click', () => {
+      const selecionadas = Array.from(document.querySelectorAll('.times img.selected'))
+        .map(img => img.getAttribute('alt'));
+
+      localStorage.setItem('timesSelecionados', JSON.stringify(selecionadas));
+
+      // Redireciona para onde veio ou para o index
+      if (from === 'noticias') {
+        window.location.href = 'noticias.html';
+      } else {
+        window.location.href = 'index.html';
+      }
+    });
+  </script>
+</body>
+</html>

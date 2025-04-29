@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>fanfuria | Entrar</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    body {
+      background-color: white;
+      font-family: "Poppins", sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 15px;
+      width: 100%;
+      max-width: 500px;
+      padding: 20px;
+    }
+
+    .logo-menu {
+      width: 244px;
+      height: auto;
+      margin-bottom: 20px;
+    }
+
+    input {
+      font-family: "Poppins", sans-serif;
+      font-weight: 400;
+      width: 100%;
+      height: 45px;
+      background-color: white;
+      font-size: 18.5px;
+      border-radius: 12px;
+      border: 2px solid black;
+      padding-left: 10px;
+    }
+
+    .entrar-botao {
+      width: 100%;
+      height: 45px;
+      font-size: 18px;
+      border-radius: 12px;
+      background-color: #000;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+    }
+
+    .texto-criar {
+      margin-top: 10px;
+      font-size: 14px;
+    }
+
+    .texto-criar a {
+      color: #000;
+      font-weight: bold;
+      margin-left: 5px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <img class="logo-menu" src="img/logo.png" alt="Logo fanfuria">
+
+    <input id="email" placeholder="E-mail" type="email">
+    <input id="senha" placeholder="Senha" type="password">
+
+    <button id="entrar" class="entrar-botao">ENTRAR</button>
+
+    <div class="texto-criar">
+      Ainda não tem conta? <a href="cadastro.html">Criar conta</a>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById('entrar').addEventListener('click', function () {
+      const email = document.getElementById('email').value;
+      const senha = document.getElementById('senha').value;
+
+      if (!email || !senha) {
+        alert("Preencha todos os campos!");
+        return;
+      }
+
+      const usuarios = JSON.parse(localStorage.getItem('usuarios')) || [];
+
+      const usuarioEncontrado = usuarios.find(u => u.email === email && u.senha === senha);
+
+      if (usuarioEncontrado) {
+        alert("Login realizado com sucesso!");
+        window.location.href = "home.html";
+      } else {
+        alert("E-mail ou senha incorretos!");
+      }
+    });
+  </script>
+</body>
+</html>

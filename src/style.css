@@ -1,0 +1,164 @@
+body {
+    background-color: white;
+    font-family: "Poppins", sans-serif;
+    font-weight: 500;
+    font-style: normal;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .texto-entrar {
+    position: absolute;
+    top: 270px;
+    left: 45%;
+  }
+
+.logo-menu {
+    width: 244px;
+    height: 101px;
+    position: absolute;
+    left: 634px;
+    top: 161px;
+}
+
+.email {
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    width: 450px;
+    height: 45px;
+    background-color: white;
+    font-size: 18.5px;
+    border-radius: 12px;
+    position: absolute;
+    left: 531px;
+    top: 325px;
+}
+
+
+.senha {
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    width: 450px;
+    height: 45px;
+    background-color: white;
+    border-radius: 12px;
+    font-size: 18.5px;
+    position: absolute;
+    left: 531px;
+    top: 406px;
+}
+
+.entrar-botao {
+    font-family: "Poppins", sans-serif;
+    font-weight: 600;
+    font-style: normal;
+    width: 280px;
+    height: 70px;
+    background-color: black;
+    color: white;
+    border-radius: 12px;
+    font-size: 20px;
+    position: absolute;
+    left: 616px;
+    top: 514px;
+}
+
+.logo-boasvindas {
+    width: 244px;
+    height: 101px;
+    position: absolute;
+    left: 634px;
+    top: 73px;
+}
+
+.texto1 {
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+    position: absolute;
+    font-size: 16px;
+    left: 634px;
+    top: 225px;
+}
+
+.texto2 {
+    font-family: "Poppins", sans-serif;
+    font-weight: 500;
+    position: absolute;
+    font-size: 18px;
+    left: 550px;
+    top: 249px;
+}   
+
+.val {
+    position: absolute;
+    left: 396px;
+    top: 341px;
+}
+
+.cs {
+    position: absolute;
+    left: 646px;
+    top: 341px;
+}
+
+.rl {
+    position: absolute;
+    left: 896px;
+    top: 341px;
+}
+
+.kl {
+    position: absolute;
+    left: 396px;
+    top: 580px;
+}
+
+.lol {
+    position: absolute;
+    left: 646px;
+    top: 580px;
+}
+
+.r6 {
+    position: absolute;
+    left: 896px;
+    top: 580px;
+}
+
+.val.selected {
+    border: 4px solid #00ff00; /* verde fluorescente */
+}
+
+.times img {
+    margin: 10px;
+
+    border-radius: 15px;
+    cursor: pointer;
+    transition: border 0.3s;
+}
+
+.times img.selected {
+    border: 2px solid #00ff00; /* verde */
+    opacity: 0.85;
+    transition: opacity 0.3s;
+}
+
+.times .next {
+    cursor: pointer;
+    margin-top: 20px;
+}   
+
+.next {
+    width: 90px;
+    height: 90px;
+    position: absolute;
+    left: 1140px;
+    top: 570px;
+    cursor: pointer;
+}
+

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>fanfuria | Perfil</title>
+  <link rel="stylesheet" href="world.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="cabecalho">
+    <a href="home.html"><img class="logo-icon" src="img/logoicon.png" alt="Logo" /></a>
+    <div class="cab-texto">
+      <a href="noticias.html">Notícias</a>
+      <a href="https://www.furia.gg">Loja</a>
+      <a href="times.html">Times</a>
+      <a href="perfil.html">Perfil</a>
+    </div>
+  </div>
+
+  <div class="card">
+    <img class="img-card" src="https://thumbs.dreamstime.com/b/vetor-de-ícone-perfil-do-avatar-padrão-foto-usuário-mídia-social-183042379.jpg" alt="">
+
+    <!-- Exibe as informações do usuário -->
+    <span class="text-name">Nome: <span id="nome-usuario">Carregando...</span></span>
+    <span class="text-favgame">Jogo Favorito: <span id="favgame">Carregando...</span></span>
+    <span class="text-favstream">Streamer Favorito: <span id="favstream">Carregando...</span></span>
+    <span class="text-email">Email: <span id="email">Carregando...</span></span>
+    <span class="text-cpf">CPF: <span id="cpf">Carregando...</span></span>
+
+    <button id="editar-nome">Editar informações</button>
+  </div>
+
+  <span class="text-maquina">Máquina do Tempo</span>
+
+  <div class="container-tempo">
+    <span class="text-assistidos">Os mais assistidos</span>
+    <!-- Assumindo que você quer placeholders ou conteúdos fixos aqui -->
+    <div class="lugar-um">
+      <img class="streamer-foto-um" src="https://thumbs.dreamstime.com/b/vetor-de-ícone-perfil-do-avatar-padrão-foto-usuário-mídia-social-183042379.jpg" alt="">
+      <span class="streamer-name-um">NAME</span>
+      <span class="numero-um">1</span>
+      <span class="horas-um">48 Horas</span>
+    </div>
+
+    <div class="lugar-dois">
+      <img class="streamer-foto-dois" src="https://thumbs.dreamstime.com/b/vetor-de-ícone-perfil-do-avatar-padrão-foto-usuário-mídia-social-183042379.jpg" alt="">
+      <span class="streamer-name-dois">NAME</span>
+      <span class="numero-dois">2</span>
+      <span class="horas-dois">20 Horas</span>
+    </div>
+
+    <div class="lugar-tres">
+      <img class="streamer-foto-tres" src="https://thumbs.dreamstime.com/b/vetor-de-ícone-perfil-do-avatar-padrão-foto-usuário-mídia-social-183042379.jpg" alt="">
+      <span class="streamer-name-tres">NAME</span>
+      <span class="numero-tres">3</span>
+      <span class="horas-tres">18 Horas</span>
+    </div>
+  </div>
+
+  <span class="text-jogos">Jogos mais assistidos</span>
+
+  <div class="jogo-1">
+    <span class="jogo-1-texto">Valorant</span>
+    <span class="jogo-1-hora">40 Horas</span>
+  </div>
+
+  <div class="jogo-2">
+    <span class="jogo-2-texto">Kings League</span>
+    <span class="jogo-2-hora">30 Horas</span>
+  </div>
+
+  <div class="jogo-3">
+    <span class="jogo-3-texto">Counter-Strike</span>
+    <span class="jogo-3-hora">28 Horas</span>
+  </div>
+
+  <span class="rodape">fim</span>
+
+  <script>
+    // Removido código de verificação de login
+    // Agora o perfil pode ser acessado sem a necessidade de login
+
+    // Função para carregar os dados do usuário (caso existam no localStorage)
+    function carregarPerfil() {
+      const usuario = JSON.parse(localStorage.getItem('usuario')) || {}; // Agora é opcional ter dados do usuário
+
+      // Atualiza as informações no card com os dados do usuário ou valores padrão
+      document.getElementById('nome-usuario').textContent = usuario.nome || 'Nome não definido';
+      document.getElementById('favgame').textContent = usuario.favGame || 'Não definido';
+      document.getElementById('favstream').textContent = usuario.favStream || 'Não definido';
+      document.getElementById('email').textContent = usuario.email || 'Não definido';
+      document.getElementById('cpf').textContent = usuario.cpf || 'Não definido';
+    }
+
+    // Carrega as informações ao abrir a página
+    carregarPerfil();
+  </script>
+</body>
+</html>

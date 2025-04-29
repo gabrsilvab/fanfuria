@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>fanfuria</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="home.css">
+</head>
+<style>
+  body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background-color: #fff;
+    color: #fff;
+  }
+
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .cabecalho {
+    background-color: #141414;
+    width: 100%;
+    height: 65px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    padding: 0 15px;
+    z-index: 1000;
+  }
+
+  .logo-icon {
+    width: 42px;
+    height: 42px;
+    margin-right: 30px;
+  }
+
+  .cab-texto a {
+    margin-right: 20px;
+    font-weight: 600;
+    font-size: 15px;
+    transition: color 0.3s;
+  }
+
+  .cab-texto a:hover {
+    color: #86919e;
+  }
+
+  .anuncio-container {
+    width: 100%;
+    height: 620px;
+    margin-top: 65px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .slide {
+    width: 100%;
+    height: 620px;
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+
+  .slide.active {
+    display: block;
+  }
+
+  .slide iframe,
+  .slide img {
+    width: 100%;
+    height: 620px;
+    object-fit: cover;
+  }
+
+  .carousel-nav {
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    transform: translateY(-50%);
+    padding: 0 20px;
+    box-sizing: border-box;
+    z-index: 10;
+  }
+
+  .carousel-nav button {
+    background-color: rgba(0,0,0,0.6);
+    color: #fff;
+    font-size: 28px;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 10px;
+    cursor: pointer;
+  }
+
+  .carousel-nav button:hover {
+    background-color: rgba(255,255,255,0.2);
+  }
+
+  .textos {
+    position: absolute;
+    bottom: 80px;
+    left: 14px;
+    z-index: 5;
+  }
+
+  .texto-anu1 {
+    font-size: 36px;
+    font-weight: 600;
+  }
+
+  .texto-anu2 {
+    font-size: 36px;
+    font-weight: 600;
+    color: #FF3D3D;
+    margin-left: 20px;
+  }
+
+  .texto-anu3 {
+    font-size: 21px;
+    font-weight: 400;
+    margin-top: 10px;
+  }
+
+  .texto-slide {
+    display: none;
+  }
+
+  .texto-slide.active {
+    display: block;
+  }
+
+  .ao-vivo {
+      background-color: #000517;
+      color: #fff;
+      width: 320px;
+      height: 150px;
+      position: absolute;
+      top: 807px;
+      left: 1082px;
+      border-radius: 12px;
+  }
+
+  .ao-vivo-texto {
+      color: #FF3D3D;
+      font-weight: 700;
+      font-size: 23px;
+      position: absolute;
+      top: 820px;
+      left: 1188px;
+  }
+
+
+  .ao-vivo-texto-dois {
+      color: #fff;
+      font-weight: 400;
+      position: absolute;
+      top: 870px;
+      left: 1164px;
+      font-size: 18px;
+  }
+  
+  .bem-vindo {
+    color: #000;
+    position: absolute;
+    top: 714px;
+    left: 17px;
+    font-size: 25px;
+  }
+
+  .rodape {
+      color: #000;
+      position: absolute;
+      top: 2400px;
+      left: 20px;
+  }
+
+  .texto2 {
+      color: #000;
+      position: absolute;
+      top: 780px;
+      left: 20px;
+      font-size: 24px;
+      font-weight: 700;
+      border-radius: 12px;
+  }
+
+  .agenda {
+    background-color: #000517;
+      color: #fff;
+      width: 320px;
+      height: 424px;
+      position: absolute;
+      top: 974px;
+      left: 1082px;
+      border-radius: 12px;
+      text-align: center;
+  }
+
+  .tw-um {
+  color: #000;
+  font-weight: 600;
+  position: absolute;
+  left: 15px;
+  top: 1748px;
+  font-size: 22px;
+  }
+
+  .tw-dois {
+    color: #A92DE3;
+    font-weight: 600;
+    position: absolute;
+    left: 123px;
+    top: 1748px;
+    font-size: 22px;
+    }
+
+    .tw-video {
+      width: 395px;
+      height: 265px;
+      border-radius: 12px;
+      position: absolute;
+      top: 1798px;
+      left: 15px;
+    }
+
+    .tw-video-dois {
+      width: 395px;
+      height: 265px;
+      border-radius: 12px;
+      position: absolute;
+      top: 1798px;
+      left: 420px;
+    }
+  
+
+  .texto-yt-um{
+    color: #000;
+    font-weight: 600;
+    font-size: 22px;
+    position: absolute;
+    left: 15px;
+    top: 1356px;
+  }
+  .texto-yt-dois{
+    color: #D33737;
+    font-weight: 600;
+    font-size: 22px;
+    position: absolute;
+    left: 132px;
+    top: 1356px;
+  }
+
+  .video-yt-um{
+    border-radius: 12px;
+    position: absolute;
+    top: 1398px;
+    left: 15px;
+  }
+
+  .video-yt-dois{
+    border-radius: 12px;
+    position: absolute;
+    top: 1398px;
+    left: 420px;
+  }
+</style>
+<body>
+  <div class="cabecalho">
+    <a href="home"><img class="logo-icon" src="img/logoicon.png" alt="Logo" /></a>
+    <div class="cab-texto">
+      <a href="noticias.html">Notícias</a>
+      <a href="https://www.furia.gg">Loja</a>
+      <a href="times.html">Times</a>
+      <a href="perfil.html">Perfil</a>
+    </div>
+  </div>
+
+  <div class="anuncio-container">
+    <div class="slide active">
+      <iframe src="https://www.youtube.com/embed/NoVWm-vaJKU?start=41"
+              title="YouTube video player"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen></iframe>
+    </div>
+
+    <div class="slide">
+      <img src="img/anuncio2.jpg" alt="Anúncio 2" />
+    </div>
+
+    <div class="slide">
+      <img src="img/anuncio3.jpg.webp" alt="Anúncio 3" />
+    </div>
+
+    <div class="textos">
+      <div class="texto-slide active">
+        <span class="texto-anu1">TRANSMISSÃO</span>
+        <span class="texto-anu2">AO VIVO</span>
+      </div>
+      <div class="texto-slide">
+        <span class="texto-anu1">CAPSULAS VCT 2025</span>
+        <div class="texto-anu3">Compre agora seu Bundle da FURIA</div>
+      </div>
+      <div class="texto-slide">
+        <span class="texto-anu1">FURIA X ADIDAS</span>
+        <div class="texto-anu3">Nova linha de produtos oficiais</div>
+      </div>
+    </div>
+
+    <div class="carousel-nav">
+      <button onclick="changeSlide(-1)">❮</button>
+      <button onclick="changeSlide(1)">❯</button>
+    </div>
+  </div>
+
+  <span class="bem-vindo">Bem-vindo, ERICGG</span>
+
+  <span class="texto2">Últimos Tweets da Furia</span>
+
+  <!-- Tweet 1 -->
+<div style="position: absolute; left: 15px; top: 808px; width: 286px; height: 490px; overflow: hidden;">
+    <blockquote class="twitter-tweet" data-theme="dark" data-width="320">
+      <p lang="pt" dir="ltr">
+        Bem-vindo à <a href="https://twitter.com/hashtag/FURIACS?src=hash&amp;ref_src=twsrc%5Etfw">#FURIACS</a>, 
+        <a href="https://twitter.com/yek1ndar?ref_src=twsrc%5Etfw">@yek1ndar</a>! 🇱🇻<br><br>
+        O jogador se juntará a nós como stand-in para a disputa da PGL Astana, IEM Dallas e BLAST Austin Major 2025.<br><br>
+        YEKINDAR is officially part of our CS2 team as a stand-in. Welcome aboard! 💪 
+        <a href="https://t.co/xvGa8l8Hj3">pic.twitter.com/xvGa8l8Hj3</a>
+      </p>
+      &mdash; FURIA (@FURIA) 
+      <a href="https://twitter.com/FURIA/status/1914726018440458417?ref_src=twsrc%5Etfw">April 22, 2025</a>
+    </blockquote>
+  </div>
+  
+  <!-- Tweet 2 -->
+  <div style="position: absolute; left: 315px; top: 808px; width: 286px; height: 490px; overflow: hidden;">
+    <blockquote class="twitter-tweet" data-theme="dark" data-width="320">
+      <p lang="pt" dir="ltr">
+        VITÓRIA no Derby Real pra assumirmos a liderança isolada do campeonato! 🐾☝️
+        <a href="https://twitter.com/hashtag/FURIAFC?src=hash&amp;ref_src=twsrc%5Etfw">#FURIAFC</a> 
+        9️⃣x7️⃣ G3X pela 5ª rodada da 
+        <a href="https://twitter.com/hashtag/KingsLeagueBrazil?src=hash&amp;ref_src=twsrc%5Etfw">#KingsLeagueBrazil</a>!<br><br>
+        ⚽ Leleti 1'<br>⚽ Leleti 19'<br>⚽ Dedo 19'<br>⚽ Lipão 20+1'<br>
+        ⚽ Lipão 20+2'<br>⚽ Jeffinho 24'<br>⚽ Cris Guedes (PP) 26'<br>⚽ Leleti (x2) 34'
+        <a href="https://twitter.com/hashtag/DIADEFURIA?src=hash&amp;ref_src=twsrc%5Etfw">#DIADEFURIA</a> 
+        <a href="https://t.co/JIbFWCkE14">pic.twitter.com/JIbFWCkE14</a>
+      </p>
+      &mdash; FURIA (@FURIA) 
+      <a href="https://twitter.com/FURIA/status/1914483955492921374?ref_src=twsrc%5Etfw">April 22, 2025</a>
+    </blockquote>
+  </div>
+  
+  <!-- Tweet 3 -->
+  <div style="position: absolute; left: 615px; top: 808px; width: 286px; height: 490px; overflow: hidden;">
+    <blockquote class="twitter-tweet" data-theme="dark" data-width="320">
+      <p lang="pt" dir="ltr">
+        <a href="https://twitter.com/hashtag/FURIALoL?src=hash&amp;ref_src=twsrc%5Etfw">#FURIALoL</a> 
+        2-1 na Super Semana da 
+        <a href="https://twitter.com/hashtag/LTASul?src=hash&amp;ref_src=twsrc%5Etfw">#LTASul</a>!<br><br>
+        GGWP RED, VKS e LOUD.<br><br>
+        Que venham as Melhores de 3 🙏 
+        <a href="https://t.co/5HJj4FUhsg">pic.twitter.com/5HJj4FUhsg</a>
+      </p>
+      &mdash; FURIA (@FURIA) 
+      <a href="https://twitter.com/FURIA/status/1914390962547183911?ref_src=twsrc%5Etfw">April 21, 2025</a>
+    </blockquote>
+  </div>
+
+  <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+  <div class="ao-vivo">
+  </div>
+  <span class="ao-vivo-texto">AO VIVO</span>
+  <span class="ao-vivo-texto-dois">sem jogos agora</span>
+
+  <div class="agenda">
+    <span >Sem agenda</span>
+  </div>
+
+  <div>
+    <span class="tw-um">Agora na</span>
+
+  <span class="tw-dois">Twitch</span>
+
+  <iframe class="tw-video" width="395" height="265" src="https://player.twitch.tv/?channel=mwzera&parent=www.example.com" frameborder="0" allowfullscreen="true" scrolling="no" height="378" width="620"></iframe>
+
+  <iframe class="tw-video-dois" width="395" height="265" src="https://player.twitch.tv/?video=2441594311&parent=www.example.com" frameborder="0" allowfullscreen="true" scrolling="no" height="378" width="620"></iframe>
+  </div>
+
+  <span class="texto-yt-um">Vídeos no</span><span class="texto-yt-dois">YouTube</span>
+
+  <iframe class="video-yt-um" width="395" height="265" src="https://www.youtube.com/embed/0NluG5rZlWo?si=NUPgB64dKcCOjt2k" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+  <iframe class="video-yt-dois" width="395" height="265" src="https://www.youtube.com/embed/vitK6eKYdYk?si=Fy9yh3QfE2ej3vLH" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+  <div class="rodape">
+    <span>Siga a Furia nas redes sociais</span>
+    <div class="link-rodape">
+        <a href=""><span>Instagram</span></a>
+        <a href=""><span>X</span></a>
+        <a href=""><span>TikTok</span></a>
+        <a href=""><span>LinkedIn</span></a>
+    </div>
+  </div>
+  <script>
+    let currentSlide = 0;
+    const slides = document.querySelectorAll('.slide');
+    const textos = document.querySelectorAll('.texto-slide');
+
+    function showSlide(index) {
+      slides.forEach((slide, i) => {
+        slide.classList.toggle('active', i === index);
+        textos[i].classList.toggle('active', i === index);
+      });
+    }
+
+    function changeSlide(direction) {
+      currentSlide = (currentSlide + direction + slides.length) % slides.length;
+      showSlide(currentSlide);
+    }
+  </script>
+</body>
+</html>

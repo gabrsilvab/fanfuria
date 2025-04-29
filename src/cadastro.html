@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>fanfuria | Crie sua conta</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    body {
+      background-color: white;
+      font-family: "Poppins", sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 15px;
+      width: 100%;
+      max-width: 500px;
+      padding: 20px;
+    }
+
+    .logo-menu {
+      width: 244px;
+      height: auto;
+      margin-bottom: 20px;
+    }
+
+    input {
+      font-family: "Poppins", sans-serif;
+      font-weight: 400;
+      width: 100%;
+      height: 45px;
+      background-color: white;
+      font-size: 18.5px;
+      border-radius: 12px;
+      border: 2px solid black;
+      padding-left: 10px;
+    }
+
+    .entrar-botao {
+      width: 100%;
+      height: 45px;
+      font-size: 18px;
+      border-radius: 12px;
+      background-color: #000;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+    }
+
+    .texto-entrar {
+      margin-top: 10px;
+      font-size: 14px;
+    }
+
+    .texto-entrar a {
+      color: #000;
+      font-weight: bold;
+      margin-left: 5px;
+    }
+
+    .cep-container {
+      display: flex;
+      gap: 10px;
+      width: 100%;
+    }
+
+    .cep-container input {
+      width: 70%;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <img class="logo-menu" src="img/logo.png" alt="Logo fanfuria">
+
+    <input id="nome" placeholder="Nome completo" type="text">
+    <input id="cpf" placeholder="CPF" type="text" maxlength="14">
+    <input id="nickname" placeholder="Seu Nickname" type="text">
+    <input id="email" placeholder="E-mail" type="email">
+    <input id="senha" placeholder="Senha" type="password">
+    
+    <!-- Novo campo para o CEP -->
+    <div class="cep-container">
+      <input id="cep" placeholder="CEP" type="text" maxlength="9">
+      <button type="button" id="buscar-cep" class="entrar-botao">Buscar CEP</button>
+    </div>
+
+    <input id="endereco" placeholder="Endereço" type="text" disabled>
+    <input id="bairro" placeholder="Bairro" type="text" disabled>
+    <input id="cidade" placeholder="Cidade" type="text" disabled>
+    <input id="uf" placeholder="Estado" type="text" disabled>
+
+    <button id="cadastrar" class="entrar-botao">ENTRAR</button>
+
+    <div class="texto-entrar">
+      Já tem conta? <a href="index.html">Entrar</a>
+    </div>
+  </div>
+
+  <script>
+    // Formatação do CPF
+    document.getElementById('cpf').addEventListener('input', function (e) {
+      let cpf = e.target.value.replace(/\D/g, ''); // Remove tudo o que não for número
+      if (cpf.length <= 3) {
+        cpf = cpf.replace(/(\d{3})(\d+)/, '$1.$2');
+      } else if (cpf.length <= 6) {
+        cpf = cpf.replace(/(\d{3})(\d{3})(\d+)/, '$1.$2.$3');
+      } else if (cpf.length <= 9) {
+        cpf = cpf.replace(/(\d{3})(\d{3})(\d{3})(\d+)/, '$1.$2.$3-$4');
+      } else {
+        cpf = cpf.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, '$1.$2.$3-$4');
+      }
+      e.target.value = cpf;
+    });
+
+    // Função para buscar o endereço pelo CEP
+    document.getElementById('buscar-cep').addEventListener('click', function() {
+      const cep = document.getElementById('cep').value.replace(/\D/g, '');
+
+      if (cep.length !== 8) {
+        alert('CEP inválido!');
+        return;
+      }
+
+      fetch(`https://viacep.com.br/ws/${cep}/json/`)
+        .then(response => response.json())
+        .then(data => {
+          if (data.erro) {
+            alert('CEP não encontrado!');
+          } else {
+            document.getElementById('endereco').value = data.logradouro;
+            document.getElementById('bairro').value = data.bairro;
+            document.getElementById('cidade').value = data.localidade;
+            document.getElementById('uf').value = data.uf;
+          }
+        })
+        .catch(error => alert('Erro ao buscar o CEP'));
+    });
+
+    // Evento de cadastro
+    document.getElementById('cadastrar').addEventListener('click', function () {
+      const nome = document.getElementById('nome').value;
+      const cpf = document.getElementById('cpf').value;
+      const nickname = document.getElementById('nickname').value;
+      const email = document.getElementById('email').value;
+      const senha = document.getElementById('senha').value;
+      const endereco = document.getElementById('endereco').value;
+      const bairro = document.getElementById('bairro').value;
+      const cidade = document.getElementById('cidade').value;
+      const uf = document.getElementById('uf').value;
+
+      if (!nome || !cpf || !nickname || !email || !senha || !endereco || !bairro || !cidade || !uf) {
+        alert("Preencha todos os campos!");
+        return;
+      }
+
+      const usuario = {
+        nome,
+        cpf,
+        nickname,
+        email,
+        senha,
+        endereco,
+        bairro,
+        cidade,
+        uf
+      };
+
+      // Salvando o usuário no localStorage
+      let usuarios = JSON.parse(localStorage.getItem('usuarios')) || [];
+      usuarios.push(usuario);
+      localStorage.setItem('usuarios', JSON.stringify(usuarios));
+
+      // Redirecionando para a página de validação de CPF
+      window.location.href = "validacpf.html";
+    });
+  </script>
+</body>
+</html>
