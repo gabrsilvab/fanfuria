@@ -2,7 +2,7 @@
 
 O **FanFuria** é uma aplicação em modo experimental para proporcionar aos fãs da FURIA uma experiência interativa e personalizada. Através do app, os usuários podem acompanhar as últimas notícias sobre seus times favoritos, personalizar suas preferências, e ter uma visão detalhada dos seus jogos e streamers preferidos.
 
-obs:O melhor uso desse app é a resolução na qual foi Criada: 2550x1664, Porém é funcional em outras resoluções web
+obs:O melhor uso desse site é a resolução na qual foi Criada: 2550x1664, Porém é funcional em outras resoluções web
 
 ## Funcionalidades
 
