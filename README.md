@@ -26,6 +26,8 @@ Obs: O melhor uso desse site é a resolução na qual foi criada; 2550x1664, Por
    ```bash
    https://github.com/gabrsilvab/fanfuria.git
 
-1. **Cadastro**:
+. **Cadastro**:
    Para simplificar a expêriencia de Cadastro, use o cpf 111-222-333-44, use a imagem "cartão-de-cpf-4.png", localizada em "src/img"
    Mas conformes os testes, ele também funciona com Cartões de CPF
+   
+  **ou acesse** https://gabrsilvab.github.io/fanfuria/src/
